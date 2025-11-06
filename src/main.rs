@@ -44,7 +44,7 @@ fn sjf_algorithm(mut jobs: Vec<Job>) {
         let idx = idx_min.unwrap();
         let job = &jobs[idx];
 
-        println!(" -> Proceso P{}", job.id);
+        println!("Proceso P{}", job.id);
 
         waiting_times[idx] = current_time.saturating_sub(job.arrive_time);
         current_time += job.burst_time;
@@ -56,9 +56,6 @@ fn sjf_algorithm(mut jobs: Vec<Job>) {
 
     let total_wait: u32 = waiting_times.iter().sum();
     let total_turnaround: u32 = turnaround_times.iter().sum();
-
-    println!("\nResultados finales:");
-    println!("Proceso | Llegada | Ejecución | Espera | Retorno");
 
     for i in 0..n {
         println!(
